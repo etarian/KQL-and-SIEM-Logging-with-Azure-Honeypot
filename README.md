@@ -1,27 +1,35 @@
-# KQL-and-SIEM-Logging-with-Azure-Honeypot# 🐝 Azure Honeypot & Sentinel SIEM Project
+# 🐝 Azure Honeypot & Sentinel SIEM Project
 
-This project demonstrates how to deploy a Windows honeypot in Azure, collect and enrich security logs using Microsoft Sentinel, and visualize attacker data using a geolocation map. It's ideal for cybersecurity learning and practice in threat detection, log analysis, and SIEM operations.
+This project demonstrates how to deploy a Windows honeypot in Azure, collect and enrich security logs using Microsoft Sentinel, and visualize attacker data using a geolocation map. It's ideal for cybersecurity learning and practice in threat detection, log analysis, and SIEM operations. Below I have explained my steps in detail, in 5 parts on how I created and operated this project.
 
----
+## Part 1: Create the Honey Pot (Azure VM)
 
-## 🖼️ Project Architecture
+1. Go to [Azure Portal](https://portal.azure.com) and search for **Virtual Machines**.
+2. Create a new **Windows 10** virtual machine.
+   - Choose a size appropriate for your subscription (Cyber Range has limits).
+   - Take note of the **username and password**.
+   - Be aware of the monthly cost if left on 24/7 — shut down when not in use or use Cyber Range.
+3. Go to the **Network Security Group** of the VM.
+   - Create a rule to **allow all inbound traffic**.
+4. Log into the VM and **turn off Windows Firewall**:
 
-![Azure Honeypot SOC Architecture](./Screen%20Shot%202025-05-11%20at%208.14.20%20PM.png)
 
-This diagram shows how a publicly exposed honeypot VM receives attacks, logs are forwarded to Log Analytics, enriched via a GeoIP watchlist, and visualized in Microsoft Sentinel.
+## Part 2: Logging into the VM and Inspecting Logs
 
----
+1. Attempt **3 failed logins** as a fake user (e.g., `employee`).
+2. Log in as your admin user.
+3. Open **Event Viewer**:
+- Navigate to: `Windows Logs > Security`
+- Look for **Event ID 4625** (failed login attempts).
 
-## 📌 Table of Contents
 
-- [Part 2: Create the Honey Pot (Azure VM)](#part-2-create-the-honey-pot-azure-vm)
-- [Part 3: Logging into the VM and Inspecting Logs](#part-3-logging-into-the-vm-and-inspecting-logs)
-- [Part 4: Log Forwarding and KQL](#part-4-log-forwarding-and-kql)
-- [Part 5: Log Enrichment and Finding Location Data](#part-5-log-enrichment-and-finding-location-data)
-- [Part 6: Attack Map Creation](#part-6-attack-map-creation)
-- [Resources](#resources)
+## Part 3: Log Forwarding and KQL
 
----
-
-## Part 2: Create the Honey Pot (Azure VM)
-...
+1. Create a **Log Analytics Workspace (LAW)**.
+2. Create a **Microsoft Sentinel** instance and connect it to your LAW.
+3. Configure the **“Windows Security Events via AMA”** connector.
+4. Create the **Data Collection Rule (DCR)** within Sentinel.
+5. Query your logs with **KQL** (Kusto Query Language):
+```kql
+SecurityEvent
+| where EventId == 4625
