@@ -33,29 +33,29 @@ This project demonstrates how to deploy a Windows honeypot in Azure, collect and
 SecurityEvent
 | where EventId == 4625
 
-Part 4. Log Enrichment and Finding Location Data
-
+## Part 4: Log Enrichment and Finding Location Data
 Observe the SecurityEvent logs in the Log Analytics Workspace; there is no location data, only IP address, which we can use to derive the location data.
 
 We are going to import a spreadsheet (as a “Sentinel Watchlist”) which contains geographic information for each block of IP addresses.
 
-Download: geoip-summarized.csv
+**Download:** `geoip-summarized.csv`
 
 Within Sentinel, create the watchlist:
 
-Name/Alias: geoip
-Source type: Local File
-Number of lines before row: 0
-Search Key: network
+- **Name/Alias:** `geoip`  
+- **Source type:** Local File  
+- **Number of lines before row:** 0  
+- **Search Key:** `network`  
 
 Allow the watchlist to fully import, there should be a total of roughly 54,000 rows.
 
 In real life, this location data would come from a live source or it would be updated automatically on the back end by your service provider.
 
-(observe architecture)
+_(observe architecture)_
 
-Observe the logs now have geographic information, so you can see where the attacks are coming from
+Observe the logs now have geographic information, so you can see where the attacks are coming from:
 
+```kusto
 let GeoIPDB_FULL = _GetWatchlist("geoip");
 let WindowsEvents = SecurityEvent
     | where IpAddress == <attacker IP address>
@@ -64,21 +64,6 @@ let WindowsEvents = SecurityEvent
     | evaluate ipv4_lookup(GeoIPDB_FULL, IpAddress, network);
 WindowsEvents
 
-Part 5. Attack Map Creation
-
-Within Sentine, create a new Workbook
-
-Delete the prepopulated elements and add a “Query” element
-
-Go to the advanced editor tab, and paste the JSON
-
-Workbook (Attack map):
-map.json
-
-Observe the query
-Observe the map settings
-Observe the map
-![Screenshot 2025-05-12 001731](https://github.com/user-attachments/assets/0056ac56-b164-4577-839d-fd86763d5b38)
 
 
 
