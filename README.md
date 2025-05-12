@@ -6,12 +6,10 @@ This project demonstrates how to deploy a Windows honeypot in Azure, collect and
 
 1. Go to [Azure Portal](https://portal.azure.com) and search for **Virtual Machines**.
 2. Create a new **Windows 10** virtual machine.
-   - Choose a size appropriate for your subscription (Cyber Range has limits).
-   - Take note of the **username and password**.
-   - Be aware of the monthly cost if left on 24/7 — shut down when not in use or use Cyber Range.
 3. Go to the **Network Security Group** of the VM.
    - Create a rule to **allow all inbound traffic**.
 4. Log into the VM and **turn off Windows Firewall**:
+![Screenshot 2025-05-11 230554](https://github.com/user-attachments/assets/7b12933d-ee16-47ec-a062-180f80e2aa95)
 
 
 ## Part 2: Logging into the VM and Inspecting Logs
