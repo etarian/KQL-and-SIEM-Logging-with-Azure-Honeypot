@@ -1,0 +1,1 @@
+# KQL-and-SIEM-Logging-with-Azure-Honeypot
