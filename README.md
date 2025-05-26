@@ -11,7 +11,8 @@ This project demonstrates how to:
 
 It’s ideal for hands-on cybersecurity practice in threat detection, log analysis, and SIEM workflows.
 
----
+![Screenshot 2025-05-12 171012](https://github.com/user-attachments/assets/61766446-980a-47c3-9c2f-5a1da24ca304)
+
 
 ## 🧭 Project Overview
 
@@ -26,7 +27,8 @@ The project is divided into five parts:
 3. Disable the Windows firewall inside the VM:  
    - Open Run → `wf.msc` → Right-click "Windows Defender Firewall with Advanced Security" → Properties → Set all profiles to "Off".
 
----
+![Screenshot 2025-05-11 230554](https://github.com/user-attachments/assets/a3b219c9-d0ac-49be-b1c9-93f3b564714a)
+
 
 ### 🔍 Part 2: Trigger and Inspect Logs
 
@@ -35,7 +37,9 @@ The project is divided into five parts:
 3. Open **Event Viewer** and inspect **Security Logs**.  
 4. Look for Event ID `4625` – Failed logon attempts.
 
----
+![Screenshot 2025-05-18 012830](https://github.com/user-attachments/assets/e1763dff-ae79-4c67-9cd6-298da3fe16d2)
+
+
 
 ### 📈 Part 3: Log Forwarding & KQL Queries
 
@@ -49,6 +53,7 @@ The project is divided into five parts:
 SecurityEvent
 | where EventId == 4625
 ```
+![Screenshot 2025-05-18 012743](https://github.com/user-attachments/assets/dcfb4f81-5e84-4d70-8442-4826802f04e9)
 
 ---
 
@@ -82,7 +87,8 @@ WindowsEvents
 3. Switch to the **Advanced Editor** and paste the JSON from `map.json`.  
 4. Customize and observe the attack map with enriched IP data.
 
----
+![Screenshot 2025-05-12 001731](https://github.com/user-attachments/assets/f41299c9-9c16-4bb2-93f2-88eeaabb3d5f)
+
 
 ## 📂 Repository Structure
 
