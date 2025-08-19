@@ -1,4 +1,4 @@
-# 🐝 Azure Honeypot & Sentinel SIEM Project
+# Azure Honeypot & Sentinel SIEM Project
 
 > Inspired by Josh Madakor’s YouTube tutorial on deploying a honeypot in Azure and integrating with Microsoft Sentinel for security analytics.
 
@@ -14,13 +14,13 @@ It’s ideal for hands-on cybersecurity practice in threat detection, log analys
 ![Screenshot 2025-05-12 171012](https://github.com/user-attachments/assets/61766446-980a-47c3-9c2f-5a1da24ca304)
 
 
-## 🧭 Project Overview
+##Project Overview
 
 The project is divided into five parts:
 
 ---
 
-### ⚙️ Part 1: Create the Honeypot (Azure VM)
+###Part 1: Create the Honeypot (Azure VM)
 
 1. Create a new **Windows 10 virtual machine** in Azure (choose an appropriate size).  
 2. In the **Network Security Group**, add an **inbound rule to allow all traffic**.  
@@ -30,7 +30,7 @@ The project is divided into five parts:
 ![Screenshot 2025-05-11 230554](https://github.com/user-attachments/assets/a3b219c9-d0ac-49be-b1c9-93f3b564714a)
 
 
-### 🔍 Part 2: Trigger and Inspect Logs
+###Part 2: Trigger and Inspect Logs
 
 1. Attempt 3 failed logins using a fake user (e.g., `employee`).  
 2. Successfully log into the VM.  
@@ -41,7 +41,7 @@ The project is divided into five parts:
 
 
 
-### 📈 Part 3: Log Forwarding & KQL Queries
+###Part 3: Log Forwarding & KQL Queries
 
 1. Create a **Log Analytics Workspace (LAW)**.  
 2. Create a **Microsoft Sentinel** instance and connect it to the LAW.  
@@ -57,7 +57,7 @@ SecurityEvent
 
 ---
 
-### 🌐 Part 4: Log Enrichment (Geolocation)
+###Part 4: Log Enrichment (Geolocation)
 
 1. Observe that logs contain IP addresses but no geolocation.  
 2. Import a **geolocation watchlist** (`geoip-summarized.csv`) to Sentinel.  
@@ -80,7 +80,7 @@ WindowsEvents
 
 ---
 
-### 🗺️ Part 5: Create Attack Map
+### Part 5: Create Attack Map
 
 1. In Sentinel, create a new **Workbook**.  
 2. Delete default elements and add a new **Query** element.  
@@ -90,7 +90,7 @@ WindowsEvents
 ![Screenshot 2025-05-12 001731](https://github.com/user-attachments/assets/f41299c9-9c16-4bb2-93f2-88eeaabb3d5f)
 
 
-## 📂 Repository Structure
+##Repository Structure
 
 ```
 azure-honeypot-sentinel/
@@ -104,7 +104,7 @@ azure-honeypot-sentinel/
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 Special thanks to **Josh Madakor** for his YouTube tutorial and open resources that inspired and guided this project.
 
